@@ -4,132 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Weather App</title>
 </head>
 <body>
-    <!-- <div class="weather-app">
-        <h1>Weather App</h1>
-        <div class="search">
-            <input type="text" id="search-input" placeholder="Enter city, country, or area">
-            <button id="search-button">Search</button>
-        </div>
-        <div class="location">Loading...</div>
-        <div class="temperature">--&#8451;</div>
-        <div class="description">--</div>
-
-        <div class="forecast">
-            <div class="day">
-                <span>Mon</span>
-                <img src="https://via.placeholder.com/40" alt="Sunny">
-                <span>24&#8451;</span>
+    <header>
+        <nav>
+            <div class="first">
+                <div class="logo"><img src="" alt="">WeatherApp</div>
+                <div class="city" id="city">Karachi</div>
+                <div class="temp" id="temp">59°F</div>
             </div>
-            <div class="day">
-                <span>Tue</span>
-                <img src="https://via.placeholder.com/40" alt="Cloudy">
-                <span>22&#8451;</span>
-            </div>
-            <div class="day">
-                <span>Wed</span>
-                <img src="https://via.placeholder.com/40" alt="Rainy">
-                <span>18&#8451;</span>
-            </div>
-        </div>
-    </div> -->
-<header>
-    <nav>
-        <div class="first">
+            <div class="search-container">
+                <input type="text" class="search-input" id="search" placeholder="Enter City Name" onkeypress="handleKeyPress(event)">
+                <button class="search-button" onclick="getCityWeather()">Search</button>
+            </div>     
+        </nav>
+    </header>
 
-            <div class="logo"><img src="" alt="">WeatherApp</div>
-            <div class="city" id="city">
-Karachi
-            </div>
-            <div class="temp" id="temp">59°F</div>
-
-        </div>
-   <div class="search-container">
-    <input type="text" class="search-input" id="search" placeholder="Enter City Name">
-    <button class="search-button" onclick="getCityWeather()">Search</button>
-</div>     
-    </nav>
-</header>
-
-<div class="card-container">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-day" id="day">Monday</div>
-            <div class="card-date-time">
-
-                <div class="card-date" id="date">Dec 14, 2024</div>
-                <p class="card-time" id="time">10:30 AM</p>
-            </div>
-        </div>
-        <div class="card-main">
-            <div class="card-left">
-                <div class="card-condition" id="condition">Cloudy</div>
-                <div class="weather-image">
-                    <img src="cloudy-icon.png" alt="Cloudy" />
+    <div class="card-container">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-day" id="day">Monday</div>
+                <div class="card-date-time">
+                    <div class="card-date" id="date">Dec 14, 2024</div>
+                    <p class="card-time" id="time">10:30 AM</p>
                 </div>
             </div>
-            <div class="card-right">
-                <div class="card-temp" id="temp-main">59°F</div>
+            <div class="card-main">
+                <div class="card-left">
+                    <div class="card-condition" id="condition">Cloudy</div>
+                    <div class="weather-image">
+                        <img src="cloudy-icon.png" alt="Cloudy" id="weather-icon"/>
+                    </div>
+                </div>
+                <div class="card-right">
+                    <div class="card-temp" id="temp-main">59°F</div>
+                </div>
             </div>
-        </div>
-        <div class="card-footer">
-            <div class="detail">
-                <span class="label">Wind Speed:</span>
-                <span class="value" id="wind-speed">15 mph</span>
-            </div>
-            <div class="detail">
-                <span class="label">Humidity:</span>
-                <span class="value" id="humidity">75%</span>
-            </div>
-            <div class="detail">
-                <span class="label">Visibility:</span>
-                <span class="value" id="visibility">10 km</span>
+            <div class="card-footer">
+                <div class="detail">
+                    <span class="label">Wind Speed:</span>
+                    <span class="value" id="wind-speed">15 mph</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Humidity:</span>
+                    <span class="value" id="humidity">75%</span>
+                </div>
+                <div class="detail">
+                    <span class="label">Visibility:</span>
+                    <span class="value" id="visibility">10 km</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="forecast-container">
-    <div class="forecast-card">
-        <div class="forecast-day">Tue</div>
-        <img src="sunny-icon.png" alt="Sunny">
-        <div class="forecast-temp">63°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Wed</div>
-        <img src="rain-icon.png" alt="Rainy">
-        <div class="forecast-temp">55°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Thu</div>
-        <img src="cloudy-icon.png" alt="Cloudy">
-        <div class="forecast-temp">58°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Fri</div>
-        <img src="storm-icon.png" alt="Stormy">
-        <div class="forecast-temp">50°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Sat</div>
-        <img src="sunny-icon.png" alt="Sunny">
-        <div class="forecast-temp">67°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Sun</div>
-        <img src="rain-icon.png" alt="Rainy">
-        <div class="forecast-temp">54°F</div>
-    </div>
-    <div class="forecast-card">
-        <div class="forecast-day">Mon</div>
-        <img src="cloudy-icon.png" alt="Cloudy">
-        <div class="forecast-temp">59°F</div>
-    </div>
-</div>
-</div>
-    
+   
+
     <script src="app.js"></script>
 </body>
 </html>
